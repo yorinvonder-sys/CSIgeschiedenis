@@ -1,0 +1,701 @@
+<!DOCTYPE html>
+<html lang="nl">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>CSI Geschiedenis - De Zaak Augustus 1914</title>
+    <style>
+        @import url('https://fonts.googleapis.com/css2?family=Special+Elite&family=Crimson+Text:wght@400;600;700&display=swap');
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        body {
+            font-family: 'Crimson Text', serif;
+            background: #2a1f15;
+            background-image: 
+                repeating-linear-gradient(90deg, transparent, transparent 2px, rgba(0,0,0,.1) 2px, rgba(0,0,0,.1) 4px),
+                repeating-linear-gradient(0deg, transparent, transparent 2px, rgba(0,0,0,.1) 2px, rgba(0,0,0,.1) 4px);
+            color: #1a1410;
+            line-height: 1.7;
+            padding: 20px;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            background: #f4e4c1;
+            background-image: url('data:image/svg+xml,<svg xmlns="http://www.w3.org/2000/svg" width="100" height="100"><filter id="noise"><feTurbulence baseFrequency="0.9" numOctaves="4"/></filter><rect width="100%" height="100%" filter="url(%23noise)" opacity="0.05"/></svg>');
+            box-shadow: 0 0 50px rgba(0,0,0,0.7);
+            border: 3px solid #3d2817;
+            position: relative;
+        }
+
+        .container::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            height: 8px;
+            background: repeating-linear-gradient(
+                90deg,
+                #8b4513 0px,
+                #654321 5px,
+                #8b4513 10px
+            );
+        }
+
+        header {
+            text-align: center;
+            padding: 40px 20px 30px;
+            border-bottom: 5px double #3d2817;
+            margin-bottom: 30px;
+            background: linear-gradient(to bottom, #d4c4a0, #f4e4c1);
+            position: relative;
+        }
+
+        header::after {
+            content: '⚔ ⚔ ⚔';
+            display: block;
+            margin-top: 15px;
+            color: #8b4513;
+            font-size: 1.5em;
+        }
+
+        h1 {
+            font-family: 'Special Elite', cursive;
+            font-size: 2.8em;
+            color: #2a1f15;
+            margin-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 3px;
+            text-shadow: 2px 2px 0px rgba(139, 69, 19, 0.2);
+        }
+
+        .case-number {
+            font-family: 'Special Elite', cursive;
+            color: #8b4513;
+            font-size: 1.1em;
+            font-weight: bold;
+            background: #fff9e6;
+            display: inline-block;
+            padding: 8px 20px;
+            border: 2px solid #8b4513;
+            margin-top: 10px;
+        }
+
+        .section {
+            background: #fff9e6;
+            border: 3px solid #8b4513;
+            padding: 25px;
+            margin: 20px;
+            position: relative;
+            box-shadow: inset 0 0 20px rgba(139, 69, 19, 0.1);
+        }
+
+        .section::before {
+            content: '';
+            position: absolute;
+            top: -3px;
+            left: -3px;
+            right: -3px;
+            bottom: -3px;
+            border: 1px solid #d4a574;
+            pointer-events: none;
+        }
+
+        h2 {
+            font-family: 'Special Elite', cursive;
+            color: #2a1f15;
+            margin-bottom: 20px;
+            font-size: 2em;
+            border-bottom: 3px solid #8b4513;
+            padding-bottom: 10px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .briefing {
+            background: #f5e6d3;
+            border: 2px solid #8b4513;
+            border-left: 8px solid #8b4513;
+            padding: 20px;
+            font-size: 1.1em;
+            margin-bottom: 20px;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.2);
+        }
+
+        .briefing p {
+            margin-bottom: 10px;
+        }
+
+        .crime-scene {
+            background: #2a1f15;
+            border: 4px double #8b4513;
+            padding: 20px;
+            margin: 20px 0;
+            text-align: center;
+            position: relative;
+        }
+
+        .crime-scene::before,
+        .crime-scene::after {
+            content: '⚠';
+            position: absolute;
+            top: 50%;
+            transform: translateY(-50%);
+            font-size: 2em;
+            color: #d4a574;
+        }
+
+        .crime-scene::before { left: 10px; }
+        .crime-scene::after { right: 10px; }
+
+        .crime-scene p {
+            color: #f4e4c1;
+            font-family: 'Special Elite', cursive;
+            font-size: 1.2em;
+            margin: 8px 0;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .suspects-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+            gap: 20px;
+            margin-top: 20px;
+        }
+
+        .suspect-card {
+            background: #fff9e6;
+            padding: 20px;
+            border: 3px solid #8b4513;
+            position: relative;
+            transition: all 0.3s ease;
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.2);
+        }
+
+        .suspect-card::before {
+            content: '';
+            position: absolute;
+            top: 5px;
+            left: 5px;
+            right: 5px;
+            bottom: 5px;
+            border: 1px dashed #8b4513;
+            pointer-events: none;
+        }
+
+        .suspect-card:hover {
+            transform: translateY(-3px);
+            box-shadow: 8px 8px 20px rgba(0,0,0,0.3);
+        }
+
+        .suspect-card h3 {
+            font-family: 'Special Elite', cursive;
+            color: #8b4513;
+            margin-bottom: 10px;
+            font-size: 1.3em;
+            text-transform: uppercase;
+        }
+
+        .evidence-item {
+            background: #f5e6d3;
+            padding: 20px;
+            margin-bottom: 20px;
+            border: 3px solid #654321;
+            border-left: 8px solid #8b4513;
+            position: relative;
+            cursor: pointer;
+            transition: all 0.3s ease;
+            box-shadow: 3px 3px 10px rgba(0,0,0,0.15);
+        }
+
+        .evidence-item::after {
+            content: '📎';
+            position: absolute;
+            top: 10px;
+            right: 15px;
+            font-size: 1.5em;
+        }
+
+        .evidence-item:hover {
+            background: #fff9e6;
+            transform: translateX(5px);
+            box-shadow: 5px 5px 15px rgba(0,0,0,0.25);
+        }
+
+        .evidence-label {
+            font-family: 'Special Elite', cursive;
+            color: #2a1f15;
+            font-weight: bold;
+            font-size: 1.3em;
+            margin-bottom: 10px;
+            display: block;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .evidence-content {
+            color: #1a1410;
+            line-height: 1.8;
+            font-size: 1.05em;
+        }
+
+        .assignment {
+            background: #f5e6d3;
+            border: 4px double #8b4513;
+            padding: 25px;
+            margin-top: 20px;
+            position: relative;
+        }
+
+        .assignment::before {
+            content: '★ OPDRACHT ★';
+            position: absolute;
+            top: -18px;
+            left: 50%;
+            transform: translateX(-50%);
+            background: #2a1f15;
+            color: #f4e4c1;
+            padding: 5px 20px;
+            font-family: 'Special Elite', cursive;
+            font-size: 0.9em;
+            letter-spacing: 2px;
+        }
+
+        .assignment h3 {
+            font-family: 'Special Elite', cursive;
+            color: #8b4513;
+            margin-bottom: 15px;
+            margin-top: 10px;
+        }
+
+        .assignment ol {
+            margin-left: 25px;
+            line-height: 2;
+            font-size: 1.05em;
+        }
+
+        .assignment ol li {
+            margin-bottom: 8px;
+        }
+
+        .notes-section {
+            margin-top: 20px;
+            padding: 20px;
+            background: #f5e6d3;
+            border: 2px dashed #8b4513;
+        }
+
+        .notes-section h3 {
+            font-family: 'Special Elite', cursive;
+            color: #2a1f15;
+            margin-bottom: 15px;
+        }
+
+        .notes-section textarea {
+            width: 100%;
+            min-height: 150px;
+            background: #fff9e6;
+            border: 2px solid #8b4513;
+            padding: 15px;
+            color: #1a1410;
+            font-family: 'Crimson Text', serif;
+            font-size: 16px;
+            resize: vertical;
+        }
+
+        .notes-section textarea::placeholder {
+            color: #8b7355;
+        }
+
+        .btn {
+            background: #2a1f15;
+            color: #f4e4c1;
+            border: 2px solid #8b4513;
+            padding: 12px 30px;
+            cursor: pointer;
+            font-family: 'Special Elite', cursive;
+            font-size: 1em;
+            margin-top: 10px;
+            transition: all 0.3s ease;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        .btn:hover {
+            background: #8b4513;
+            color: #fff;
+            transform: translateY(-2px);
+            box-shadow: 0 5px 15px rgba(0,0,0,0.3);
+        }
+
+        .stamp {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            width: 120px;
+            height: 120px;
+            border: 4px solid #8b4513;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            transform: rotate(-15deg);
+            opacity: 0.3;
+            font-family: 'Special Elite', cursive;
+            color: #8b4513;
+            font-size: 1.2em;
+            text-align: center;
+            line-height: 1.2;
+        }
+
+        @media (max-width: 768px) {
+            h1 {
+                font-size: 2em;
+            }
+
+            .suspects-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .stamp {
+                width: 80px;
+                height: 80px;
+                font-size: 0.8em;
+            }
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>☠ CSI Geschiedenis ☠</h1>
+            <p class="case-number">DOSSIER #1914-08 | STATUS: OPEN</p>
+            <p style="margin-top: 15px; font-size: 1.3em; color: #654321;">De Zaak "Augustus 1914"</p>
+        </header>
+
+        <div class="section">
+            <div class="stamp">GEHEIM<br>ONDERZOEK</div>
+            <h2>⚑ Briefing</h2>
+            <div class="briefing">
+                <p><strong>Rechercheurs, welkom bij de briefing.</strong></p>
+                <p>We hebben een cold case, misschien wel de grootste uit de geschiedenis: de zaak 'Augustus 1914'. De vrede in Europa is bruut vermoord en dat leidde tot miljoenen slachtoffers. Decennialang is er gediscussieerd over de schuldvraag.</p>
+                <p><strong>Nu is het aan jullie.</strong> Hieronder vinden jullie de hoofdverdachten en het bewijsmateriaal dat we hebben kunnen verzamelen. Ga in jullie teams aan de slag. Analyseer het bewijs, koppel het aan de daders en kom met een sluitende theorie.</p>
+                <p style="color: #8b4513; margin-top: 15px; font-family: 'Special Elite', cursive;"><strong>AAN HET WERK!</strong></p>
+            </div>
+            
+            <div class="crime-scene">
+                <p>☠ Plaats Delict: Europa, Augustus 1914</p>
+                <p>⚰ Delict: De moord op de Europese Vrede</p>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚔ De Verdachten</h2>
+            <div class="suspects-grid">
+                <div class="suspect-card">
+                    <h3>Verdachte 1</h3>
+                    <p><strong>Servië</strong></p>
+                    <p>En de nationalistische beweging 'De Zwarte Hand'</p>
+                </div>
+                <div class="suspect-card">
+                    <h3>Verdachte 2</h3>
+                    <p><strong>Oostenrijk-Hongarije</strong></p>
+                    <p>Als wraakzuchtige grootmacht</p>
+                </div>
+                <div class="suspect-card">
+                    <h3>Verdachte 3</h3>
+                    <p><strong>Duitsland</strong></p>
+                    <p>Als ambitieuze en agressieve nieuwkomer</p>
+                </div>
+                <div class="suspect-card">
+                    <h3>Verdachte 4</h3>
+                    <p><strong>Rusland</strong></p>
+                    <p>Als beschermheer van de Slavische volken</p>
+                </div>
+                <div class="suspect-card">
+                    <h3>Verdachte 5</h3>
+                    <p><strong>Het Bondgenootschapssysteem</strong></p>
+                    <p>Als onzichtbare 'medeplichtige'</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <h2>⚖ Het Bewijsmateriaal</h2>
+            
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk A - Telegram</span>
+                <div class="evidence-content">
+                    <p>📨 <em>"Berlijn geeft Wenen een 'blanco cheque'. Wij staan volledig achter jullie, wat jullie ook besluiten te doen tegen Servië."</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk B - Statistieken</span>
+                <div class="evidence-content">
+                    <p>📊 <strong>Vlootuitgaven vergelijking:</strong></p>
+                    <p>• Brits Rijk 1890: £15 miljoen → 1914: £47 miljoen</p>
+                    <p>• Duitsland 1890: £4 miljoen → 1914: £22 miljoen</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk C - Citaat</span>
+                <div class="evidence-content">
+                    <p>💬 <em>"Wij Russen, als leiders van de Slavische wereld, kunnen niet werkeloos toezien hoe ons broedervolk in Servië wordt vernederd. Een mobilisatie van ons leger is onvermijdelijk als Oostenrijk aanvalt."</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk D - Kaart</span>
+                <div class="evidence-content">
+                    <p>🗺️ <strong>Europa verdeeld in twee vijandige blokken:</strong></p>
+                    <p>• <strong>Triple Entente:</strong> Frankrijk, Rusland, Groot-Brittannië</p>
+                    <p>• <strong>Triple Alliantie:</strong> Duitsland, Oostenrijk-Hongarije, Italië</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk E - Ultimatum</span>
+                <div class="evidence-content">
+                    <p><strong>📜 Wenen stuurt Servië een lijst met 10 onmogelijke eisen.</strong></p>
+                    <p>Eén daarvan: Oostenrijkse agenten mogen op Servisch grondgebied de moord op Franz Ferdinand onderzoeken.</p>
+                    <p><em>Servië weigert dit laatste punt.</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk F - Militair Plan</span>
+                <div class="evidence-content">
+                    <p><strong>⚔️ Het Schlieffen Plan (Duits militair document, opgesteld in 1905):</strong></p>
+                    <p>"Bij een tweefrontenoorlog tegen Frankrijk en Rusland moet Duitsland eerst razendsnel door neutraal België trekken om Frankrijk te verslaan, voordat Rusland volledig gemobiliseerd is."</p>
+                    <p><em>Dit plan vereist dat Duitsland bij elk conflict direct aanvalt, ongeacht de oorzaak.</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk G - Krantenkop</span>
+                <div class="evidence-content">
+                    <p><strong>📰 Berliner Zeitung, 1 augustus 1914:</strong></p>
+                    <p style="font-size: 1.3em; font-weight: bold; text-align: center; margin: 15px 0;">"RUSLAND MOBILISEERT! HET VADERLAND IN GEVAAR!"</p>
+                    <p><em>Duizenden Duitsers verzamelen zich op straat en roepen om oorlog. De Kaiser verklaart: "Wij zijn omsingeld door vijanden!"</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk H - Dagboekfragment</span>
+                <div class="evidence-content">
+                    <p><strong>✒️ Uit het dagboek van Kaiser Wilhelm II (Duitsland), 28 juli 1914:</strong></p>
+                    <p><em>"Eindelijk! Oostenrijk heeft Servië de oorlog verklaard. Nu zullen de Serviërs krijgen wat ze verdienen. Als Rusland zich erin mengt, dan is dit ons moment om onze rechtmatige plaats als wereldmacht op te eisen!"</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk I - Foto-bewijs</span>
+                <div class="evidence-content">
+                    <p><strong>📷 Politiefoto van de aanslag in Sarajevo, 28 juni 1914:</strong></p>
+                    <p>Gavrilo Princip wordt gearresteerd na het neerschieten van Aartshertog Franz Ferdinand en zijn vrouw Sophie. Princip is lid van de Servische nationalistische groep 'De Zwarte Hand', getraind en bewapend met Servische wapens.</p>
+                    <p><em>Onderzoek toont aan: Servische militaire inlichtingendienst was op de hoogte van het complot.</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk J - Telegram uit Londen</span>
+                <div class="evidence-content">
+                    <p>📨 <em>"Van Britse Minister Grey aan Duitsland, 29 juli 1914: Als Duitsland de neutraliteit van België schendt, kunnen wij niet langer aan de zijlijn blijven staan. We hebben verdragen te respecteren."</em></p>
+                    <p><strong>Duitsland negeert deze waarschuwing volledig.</strong></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk K - Mobilisatietabel</span>
+                <div class="evidence-content">
+                    <p><strong>⏰ Tijdlijn van Mobilisatie (28 juli - 4 augustus 1914):</strong></p>
+                    <p>• 28 juli: Oostenrijk verklaart oorlog aan Servië</p>
+                    <p>• 30 juli: Rusland begint algemene mobilisatie</p>
+                    <p>• 1 augustus: Duitsland verklaart oorlog aan Rusland</p>
+                    <p>• 3 augustus: Duitsland verklaart oorlog aan Frankrijk</p>
+                    <p>• 4 augustus: Duitsland valt België binnen</p>
+                    <p><em>Elke mobilisatie triggert de volgende, als vallende dominostenen.</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk L - Diplomatiek Memorandum</span>
+                <div class="evidence-content">
+                    <p><strong>📋 Frans-Russisch Verdrag (1894):</strong></p>
+                    <p>"Als één van onze naties wordt aangevallen door Duitsland, of door Oostenrijk-Hongarije gesteund door Duitsland, dan zal de ander automatisch alle troepen inzetten om de aanvaller te bestrijden."</p>
+                    <p><em>Dit betekent: geen ruimte voor onderhandeling. Oorlog is automatisch.</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk M - Persoonlijke Brief</span>
+                <div class="evidence-content">
+                    <p><strong>✉️ Brief van Oostenrijks-Hongaarse Minister van Oorlog aan de Keizer, 25 juli 1914:</strong></p>
+                    <p><em>"Majesteit, dit is onze kans. De moord op Franz Ferdinand geeft ons de perfecte rechtvaardiging om Servië eindelijk te vernietigen. Als we nu niet toeslaan, verliezen we ons prestige voor altijd. Duitsland staat achter ons!"</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk N - Spionagerapport</span>
+                <div class="evidence-content">
+                    <p><strong>🕵️ Geheim rapport Britse inlichtingendienst, juli 1914:</strong></p>
+                    <p>"Onze bronnen bevestigen dat de Duitsers al weken voordat de crisis in Sarajevo plaatsvond, hun troepen langs de Franse grens versterken. Hun marineschepen zijn in verhoogde staat van paraatheid. Dit wijst op vooropgezette plannen voor expansie."</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk O - Economische Analyse</span>
+                <div class="evidence-content">
+                    <p><strong>💰 Handelsrapport van de Berlijnse Handelskamer, 1913:</strong></p>
+                    <p>"Duitsland is de snelst groeiende economie van Europa, maar wordt buitengesloten van koloniale markten door Groot-Brittannië en Frankrijk. Onze industrie heeft dringend behoefte aan grondstoffen en afzetmarkten. Politieke spanning is onvermijdelijk."</p>
+                    <p><em>Economische rivaliteit als motief voor expansie en conflict.</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk P - Militair Bevel</span>
+                <div class="evidence-content">
+                    <p><strong>⚔️ Oostenrijks militair bevel aan generaal Conrad von Hötzendorf, 25 juli 1914:</strong></p>
+                    <p><em>"De Servische kwestie moet nu definitief worden opgelost. Wacht niet langer. Begin met artilleriebeschietingen zodra de oorlogsverklaring is afgegeven. Geen genade, geen onderhandelingen."</em></p>
+                    <p>Dit bevel werd gegeven VOORDAT Servië officieel antwoord had gegeven op het ultimatum.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk Q - Getuigenverklaring</span>
+                <div class="evidence-content">
+                    <p><strong>👤 Verklaring van Duitse ambassadeur in Londen, 3 augustus 1914:</strong></p>
+                    <p>"Toen ik de Britse minister vroeg of zij neutraal zouden blijven als we door België trekken, noemde hij ons verdrag met België 'slechts een papiertje'. Dit interpreteerden wij als stilzwijgende toestemming."</p>
+                    <p><em>Misverstand of opzettelijke misinterpretatie? Mogelijk bewijs van Duitse zelfrechtvaardiging.</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk R - Propagandaposter</span>
+                <div class="evidence-content">
+                    <p><strong>🎨 Servische nationale poster, juni 1914:</strong></p>
+                    <p style="text-align: center; font-size: 1.2em; font-weight: bold; margin: 10px 0;">"GROOT-SERVIË VOOR ALTIJD! VRIJHEID VOOR ALLE SLAVISCHE BROEDERS!"</p>
+                    <p>Deze poster circuleert weken voor de moord op Franz Ferdinand. De boodschap: Oostenrijk-Hongarije moet haar Slavische gebieden opgeven.</p>
+                    <p><em>Bewijs van Servische nationalistische agressie?</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk S - Telegram Tsaar-Kaiser</span>
+                <div class="evidence-content">
+                    <p><strong>📨 Telegram van Tsaar Nicholas II aan Kaiser Wilhelm II, 29 juli 1914:</strong></p>
+                    <p><em>"Mijn dierbare neef Willy, ik smeek je: gebruik jouw invloed op Oostenrijk om deze catastrofe te voorkomen. Onze volkeren hoeven niet te sterven voor de Balkan. Laten wij, als familie, de vrede bewaren."</em></p>
+                    <p><strong>Wilhelm's antwoord (30 juli):</strong> <em>"Te laat, lieve Nicky. De eer van Duitsland staat op het spel. Het lot is bezegeld."</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk T - Parlementair Debat</span>
+                <div class="evidence-content">
+                    <p><strong>🏛️ Uit het Franse parlement, 31 juli 1914 (socialist Jean Jaurès):</strong></p>
+                    <p><em>"Deze oorlog dient alleen de belangen van industriëlen en bankiers! Het gewone volk zal sterven voor niets! We moeten weigeren te vechten!"</em></p>
+                    <p><strong>Reactie van nationalistische volksvertegenwoordiger:</strong> <em>"Verraad! Frankrijk moet zijn eer verdedigen! Mobiliseer onmiddellijk!"</em></p>
+                    <p style="margin-top: 10px; font-size: 0.9em;">Note: Jaurès werd 24 uur later vermoord door een nationalist. De oorlogsstemming won.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk U - Geheime Overeenkomst</span>
+                <div class="evidence-content">
+                    <p><strong>🤝 Verdrag van Londen (1839) - België's neutraliteit:</strong></p>
+                    <p>"Groot-Brittannië, Frankrijk, Duitsland, Oostenrijk en Rusland garanderen allen de eeuwigdurende neutraliteit van België. Elke schending van deze neutraliteit wordt beschouwd als een aanval op alle ondertekenaars."</p>
+                    <p><em>Duitsland schond dit verdrag op 4 augustus 1914 - dit maakte Britse oorlogsdeelname onvermijdelijk.</em></p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk V - Krantenartikel</span>
+                <div class="evidence-content">
+                    <p><strong>📰 The Times (Londen), 2 augustus 1914:</strong></p>
+                    <p style="font-style: italic;">"De Duitse oorlogsmachine, jarenlang zorgvuldig opgebouwd, rolt nu over Europa als een niet te stoppen stoomwals. Hun Schlieffen Plan, ontworpen om in 6 weken Frankrijk te verslaan, toont aan dat Berlijn al jaren op dit moment heeft gewacht."</p>
+                    <p><strong>Analyse:</strong> Duitse planning wijst op lange voorbereidingstijd, geen spontane reactie.</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk W - Medisch Rapport</span>
+                <div class="evidence-content">
+                    <p><strong>⚕️ Psychiatrisch onderzoek Kaiser Wilhelm II (gelekt, 1913):</strong></p>
+                    <p>"De keizer vertoont symptomen van grootheidswaanzin en extreme onzekerheid. Hij wisselt tussen momenten van agressieve zelfverzekerdheid ('Duitsland moet de wereld leiden!') en paranoïde angst ('Ze omsingelen ons!'). Zijn emotionele instabiliteit maakt hem onvoorspelbaar in crisissituaties."</p>
+                </div>
+            </div>
+
+            <div class="evidence-item">
+                <span class="evidence-label">Bewijsstuk X - Militaire Capaciteit</span>
+                <div class="evidence-content">
+                    <p><strong>📊 Vergelijking legersterktes, augustus 1914:</strong></p>
+                    <p>• <strong>Duitsland:</strong> 4.5 miljoen soldaten (volledig modern uitgerust)</p>
+                    <p>• <strong>Oostenrijk-Hongarije:</strong> 3 miljoen soldaten</p>
+                    <p>• <strong>Rusland:</strong> 5.9 miljoen soldaten (slecht uitgerust)</p>
+                    <p>• <strong>Frankrijk:</strong> 4 miljoen soldaten</p>
+                    <p>• <strong>Servië:</strong> 250.000 soldaten</p>
+                    <p><em>De aantallen tonen aan: alle grootmachten waren voorbereid op totale oorlog.</em></p>
+                </div>
+            </div>
+        </div>
+
+        <div class="section">
+            <div class="assignment">
+                <h3>JULLIE OPDRACHT</h3>
+                <ol>
+                    <li>Bespreek elk bewijsstuk in jullie team</li>
+                    <li>Koppel elk bewijsstuk aan één of meerdere verdachten</li>
+                    <li>Noteer in jullie schrift wat het motief zou kunnen zijn</li>
+                    <li>Formuleer een eindconclusie: wie is de hoofddader, of was er sprake van een complot?</li>
+                    <li>Bereid een presentatie van 2 minuten voor waarin jullie de bevindingen delen</li>
+                </ol>
+            </div>
+
+            <div class="notes-section">
+                <h3>✒ Team Notities (optioneel)</h3>
+                <p style="margin-bottom: 10px; font-size: 0.95em; color: #654321;">Gebruik dit veld om jullie bevindingen te noteren terwijl jullie werken:</p>
+                <textarea id="teamNotes" placeholder="Bijvoorbeeld:
+- Bewijsstuk A → Verdachte 3 (Duitsland). Motief: Agressieve steun aan Oostenrijk
+- Bewijsstuk B → ..."></textarea>
+                <button class="btn" onclick="clearNotes()">✖ Notities wissen</button>
+            </div>
+        </div>
+
+        <div class="section" style="text-align: center; background: #f5e6d3;">
+            <h2>⌛ Verdere Instructies</h2>
+            <p style="margin: 20px 0; font-size: 1.1em;">Gebruik jullie <strong>lesboek en aantekeningen</strong> als naslagwerk.</p>
+            <p style="font-size: 1.1em;">Maak in jullie schrift een gestructureerd dossier met jullie analyse.</p>
+            <p style="margin-top: 20px; color: #8b4513; font-family: 'Special Elite', cursive; font-size: 1.2em;"><strong>⏰ TIJD VOOR HET ONDERZOEK: 25-30 MINUTEN</strong></p>
+        </div>
+    </div>
+
+    <script>
+        function clearNotes() {
+            if (confirm('Weet je zeker dat je de notities wilt wissen?')) {
+                document.getElementById('teamNotes').value = '';
+            }
+        }
+
+        document.querySelectorAll('.evidence-item').forEach(item => {
+            item.addEventListener('click', function() {
+                this.style.background = '#fff9e6';
+                this.style.borderLeftColor = '#654321';
+                setTimeout(() => {
+                    this.style.background = '#f5e6d3';
+                    this.style.borderLeftColor = '#8b4513';
+                }, 300);
+            });
+        });
+    </script>
+</body>
+</html>
